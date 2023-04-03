@@ -1,0 +1,44 @@
+service: user-management
+frameworkVersion: '3'
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+
+  getAllUsers:
+    timeout: 900
+    handler: handler/getAllUsers.handler
+    events:
+      - httpApi:
+          path: /users
+          method: GET
+  
+  createNewUser:
+    timeout: 900
+    handler: handler/createUser.handler
+    events:
+      - httpApi:
+          path: /createUser
+          method: POST
+
+  createNewUser:
+    timeout: 900
+    handler: handler/deleteUser.handler
+    events:
+      - httpApi:
+          path: /deleteUser
+          method: DELETE
+
+  updateUser:
+    timeout: 900
+    handler: handler/updateUser.handler
+    events:
+      - httpApi:
+          path: /updateUser
+          method: POST
+  
