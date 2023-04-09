@@ -5,14 +5,10 @@ module.exports.handler = async(event,context) =>{
     context.callbackWaitsForEmptyEventLoop = false;
     try {
         await connectDatabase();
-        const { name, email}  = JSON.parse(event.body);
-        let userObj = {
-            name,
-            email 
-        }
-        userObj = await User.create(userObj);
+
+        userObj = await User.find({});
         return {
-            statusCode : 201,
+            statusCode : 200,
             body: JSON.stringify(userObj)
         }
 

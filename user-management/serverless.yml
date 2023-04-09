@@ -26,7 +26,7 @@ functions:
           path: /createUser
           method: POST
 
-  createNewUser:
+  deleteNewUser:
     timeout: 900
     handler: handler/deleteUser.handler
     events:
@@ -39,6 +39,6 @@ functions:
     handler: handler/updateUser.handler
     events:
       - httpApi:
-          path: /updateUser
+          path: /updateUser/{id}
           method: POST
   
